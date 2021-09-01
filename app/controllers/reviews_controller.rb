@@ -1,10 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :find_review, only: %i[show edit update destroy]
 
-  def index
-    @reviews = Review.all
-  end
-
   def new
     @review = Review.new # needed to instantiate the form_for
   end
@@ -12,14 +8,6 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.save
-
-    redirect_to review_path(@review)
-  end
-
-  def edit; end
-
-  def update
-    @review.update(review_params)
 
     redirect_to review_path(@review)
   end
